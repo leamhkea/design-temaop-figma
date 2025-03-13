@@ -1,0 +1,63 @@
+---
+//@ts-nocheck
+const sliderContent = await fetch(
+  "https://frontend-design-theme.netlify.app/api/financialProjections"
+).then((response) => response.json());
+---
+
+<div>
+  <h2>{sliderContent.title}</h2>
+  <p>{sliderContent.subtitle}</p>
+</div>
+
+<ul>
+  {
+    sliderContent.values.map((slider) => (
+      <li>
+        <h2>{slider.title}</h2>
+        <p>{slider.description}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  @layer components {
+    ul {
+      list-style: none;
+
+      /* Styrer flex scroll delen */
+      overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+
+      /* Styrer "funktionen/designet på scroll */
+      scroll-snap-type: inline mandatory;
+
+      /* Sørger for at ul flugter med indhold fra index */
+      padding-inline: max(20px, 50% - 50rem / 2);
+
+      /* Sørger for card stopper ved starten af hvert card ved scroll*/
+      scroll-padding-inline-start: max(20px, 50% - 50rem / 2);
+
+      /* scroll-snap-stop: always; */
+    }
+
+    li {
+      /* Hvor brede hvert element bliver */
+      flex-basis: min(90%, 400px);
+
+      /* Gør den scrollbar */
+      flex-shrink: 0;
+
+      /* Sørger for cards vises i midten */
+      scroll-snap-align: start;
+
+      /* Custom proporties styling af card */
+      padding: 2.75rem 2.1875rem;
+      gap: 1rem;
+      border-radius: 8px;
+      background-color: var(--grey-dark);
+    }
+  }
+</style>
