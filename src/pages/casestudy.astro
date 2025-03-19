@@ -1,11 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Wrapper from "../layouts/Wrapper.astro";
+
 import Hero from "../components/Hero.astro";
-import Slider from "../components/Slider.astro";
+import Projectoverview from "../components/Projectoverview.astro";
+import Newsletter from "../components/Newsletter.astro";
 ---
 
 <Layout>
-  <Hero />
+  <Wrapper theme="section_theme_white">
+    <Projectoverview />
+  </Wrapper>
+
+  <Wrapper theme="section_theme_white">
+    <Newsletter />
+  </Wrapper>
 </Layout>
 
 <style></style>

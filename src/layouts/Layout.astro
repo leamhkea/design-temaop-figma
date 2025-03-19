@@ -1,6 +1,7 @@
 ---
 import "../styles/main.css";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -9,7 +10,7 @@ import Header from "../components/Header.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
+    <title>AskExperts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,8 +20,36 @@ import Header from "../components/Header.astro";
   </head>
   <body>
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 
-<style></style>
+<style>
+  body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr [content-start] minmax(0, 1000px) [content-end] 1fr;
+    align-items: start;
+
+    > main {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+    }
+
+    > header,
+    footer {
+      grid-column: 1 / -1;
+      display: grid;
+      /* Ved at skrive subgrid, nedarves de samme linjer ovenover fra det grid */
+      grid-template-columns: subgrid;
+      > :not(&) /* & === :is(header, footer, main, full-bleed) */ {
+        /* Nu virker alt også på børnebørnene undtagen full-bleed */
+        grid-column: content;
+      }
+    }
+  }
+</style>
