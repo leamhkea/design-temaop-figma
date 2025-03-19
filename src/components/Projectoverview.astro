@@ -4,6 +4,8 @@ const casestudyData = await fetch(
   "https://frontend-design-theme.netlify.app/api/caseStudy"
 ).then((response) => response.json());
 
+console.log(casestudyData.sections[0].highlights);
+
 import Button from "./Button.astro";
 ---
 
@@ -36,9 +38,15 @@ import Button from "./Button.astro";
           <h3>{casestudy.title}</h3>
           <p>{casestudy.content}</p>
 
-          <ul>
-            <li>{casestudy.highlights}</li>
-          </ul>
+          {casestudy.highlights ? (
+            <ul>
+              {casestudy.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          ) : (
+            ""
+          )}
         </div>
       ))
     }
@@ -61,19 +69,6 @@ import Button from "./Button.astro";
       padding-block: 3rem;
       display: flex;
       justify-content: space-around;
-
-      position: absolute;
-      bottom: -50px; /* Justér efter behov */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%; /* Justér bredden efter behov */
-    }
-
-    .overflow {
-      position: relative; /* Sørger for at dens børn (fx .container_text_overflow) kan placeres relativt til den */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     .container_img {
