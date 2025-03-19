@@ -1,0 +1,59 @@
+---
+//@ts-nocheck
+
+const employeesData = await fetch(
+  "https://frontend-design-theme.netlify.app/api/employees"
+).then((response) => response.json());
+
+import Button from "./Button.astro";
+---
+
+<div class="employyes_container">
+  <h2>Meet Our Great Team</h2>
+  <div class="employyes_text">
+    <p>
+      Welcome to our amazing team! We are a group of passionate individuals
+      dedicated to excellence and innovation. Each member brings unique skills
+      and experiences, working together to achieve our goals. Join us as we
+      embark on exciting projects and create lasting impacts.
+    </p>
+    <Button variant="primary_button">Get in touch</Button>
+  </div>
+
+  <ul role="list">
+    {
+      employeesData.map((employye) => (
+        <li>
+          <p>{employye.title}</p>
+          <h3>{employye.name}</h3>
+          <p>{employye.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  @layer components {
+    p {
+      max-width: 60ch;
+    }
+
+    .employyes_text {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    ul {
+      display: grid;
+      gap: 2rem;
+      text-align: center;
+      padding-block: 2rem;
+
+      @media (width > 800px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+</style>

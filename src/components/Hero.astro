@@ -1,15 +1,35 @@
 ---
 import Services from "./Services.astro";
+import Button from "./Button.astro";
 ---
 
-<section class="hero">
-  <!-- Markup her -->
+<div class="hero">
+  <div class="hero_text">
+    <h1>Empowering Your Business Growth</h1>
+    <p>
+      Discover tailored strategies and expert insights to take your business to
+      the next level. Let us help you navigate challenges and achieve
+      sustainable success.
+    </p>
+    <Button variant="hero_button">Book a meeting</Button>
+  </div>
+  <figure class="container_img">
+    <img src="/img/hero.png" alt="hero" class="img_hero" />
+  </figure>
 
-  <Services />
-</section>
+  <!-- <Services /> -->
+</div>
 
 <style>
   @layer components {
-    /* Styles her */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+    }
   }
 </style>

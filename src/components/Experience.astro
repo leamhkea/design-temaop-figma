@@ -1,0 +1,110 @@
+---
+import Slogan from "./Slogan.astro";
+---
+
+<div class="samlet">
+  <div>
+    <Slogan slogan="slogan_white">EXPERIENCE</Slogan>
+
+    <h2>More than 25 years of experience</h2>
+    <p>3000+ our clients are insured around the World</p>
+  </div>
+  <div class="circles">
+    <div class="circle_and_text">
+      <div class="circle" style="--percent: 85"></div>
+      <p>Consistency</p>
+    </div>
+    <div class="circle_and_text">
+      <div class="circle" style="--percent: 95"></div>
+      <p>Improvement</p>
+    </div>
+    <div class="circle_and_text">
+      <div class="circle" style="--percent: 90"></div>
+      <p>Branching</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  @layer components {
+    .samlet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .circle_and_text {
+      p {
+        text-align: center;
+        padding-block: 1rem;
+      }
+    }
+
+    .circles {
+      display: flex;
+      gap: 2rem;
+      width: min(400px, 100% - 1rem);
+    }
+
+    .circle {
+      --p: calc(var(--percent) * 1%);
+      --border-width: 5px;
+      --border-color: var(--white-primary);
+      --dot-color: var(--black-primary);
+      aspect-ratio: 1;
+      width: 150px;
+      border-radius: calc(Infinity * 1px);
+
+      /* Påvirke border farve */
+      border: var(--border-width) solid #0000;
+
+      background: 
+    /* Får starten fra rød prik til at være rund */
+        radial-gradient(
+            circle at 50% calc(var(--border-width) / 2),
+            var(--border-color) calc(var(--border-width) / 2),
+            transparent 0
+          )
+          border-box,
+        /* Laver lineær gradient, så der er en udskæring (border animeret) */
+          linear-gradient(var(--yellow-dark) 0 0) padding-box,
+        /* Udfylder baggrund og det udfyldte fra rød prik. Skriver border-box da den skal medtage det også */
+          conic-gradient(var(--border-color) var(--p), gray 0) border-box;
+
+      display: grid;
+      /* Hver gang den støder på elementet stat, så skal den nulstille */
+      counter-reset: count var(--percent);
+
+      /* Bestemmer tallen i circle */
+      &::before,
+      &::after {
+        grid-area: 1 / 1;
+      }
+
+      &::after {
+        content: counter(count) "%";
+        /* Placerer tallene i midten af circle */
+        place-self: center;
+      }
+
+      &::before {
+        content: "";
+        aspect-ratio: 1;
+        border-radius: calc(Infinity * 1px);
+
+        /* Sørger for rød prik tilpasser sig størrelse med offset-anchor*/
+        width: calc(var(--border-width) * 3);
+        background: var(--dot-color);
+
+        /* Placerer rød prik på kanten af cirkel */
+        offset-path: border-box;
+
+        /* Placerer rød prik x sted på cirkel */
+        offset-distance: var(--p);
+
+        /* Hvor på kant rød prik er placeret på cirkel ift x og y akse */
+        offset-anchor: 50% calc(50% - var(--border-width) / 2);
+      }
+    }
+  }
+</style>

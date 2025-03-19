@@ -10,14 +10,14 @@ const { variant } = Astro.props;
   @layer components {
     /* Primary button */
     [data-variant="primary_button"] {
-      background-color: var(--primary-03-black);
+      background-color: var(--black-primary);
       color: var(--white-primary);
 
       /* Primary button hover */
       &:hover {
         background-color: var(--white-primary);
-        color: var(--primary-03-black);
-        border: 2px solid var(--black-primary);
+        color: var(--black-primary);
+        border-inline: 4px solid var(--black-primary);
       }
     }
 
@@ -33,13 +33,20 @@ const { variant } = Astro.props;
       }
     }
 
+    /* Hero button */
+    [data-variant="hero_button"] {
+      background-color: var(--white-primary);
+      color: var(--black-primary);
+    }
+
     button {
       display: flex;
       text-align: center;
-      gap: 10px;
+      align-items: center;
       cursor: pointer;
       border-radius: 42px;
       padding: 0.5rem 1rem;
+      width: fit-content;
     }
   }
 </style>

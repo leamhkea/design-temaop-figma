@@ -1,0 +1,39 @@
+---
+const { slogan } = Astro.props;
+---
+
+<div data-slogan={slogan}>
+  <slot />
+</div>
+
+<style>
+  @layer components {
+    /* Yellow variant */
+    [data-slogan="slogan_yellow"] {
+      background-color: var(--yellow-dark);
+      color: var(--black-primary);
+    }
+
+    /* White variant */
+    [data-slogan="slogan_white"] {
+      background-color: var(--white-primary);
+      color: var(--black-primary);
+    }
+
+    /* Green variant */
+    [data-slogan="slogan_green"] {
+      background-color: var(--green-primary);
+      color: var(--white-primary);
+    }
+
+    div {
+      display: flex;
+      text-align: center;
+      /* cursor: pointer; */
+      border-radius: 42px;
+      padding: 0rem 1rem;
+      background-color: var(--yellow-dark);
+      width: fit-content;
+    }
+  }
+</style>

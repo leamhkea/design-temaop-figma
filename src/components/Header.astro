@@ -4,9 +4,9 @@ import Button from "./Button.astro";
 
 <header>
   <div class="site_header__inner">
-    <p>AskExperts</p>
+    <h3>AskExperts</h3>
     <nav class="navigation">
-      <ul>
+      <ul role="list">
         <li class="navigation_item">
           <a class="navigation_link" href="/">Home</a>
         </li>
@@ -28,24 +28,25 @@ import Button from "./Button.astro";
 <style>
   @layer components {
     header {
-      .site_header__inner {
-        background-color: var(--black-background);
-        color: var(--white-primary);
-        display: flex;
-        gap: 0.5rem 1rem;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-      }
+      background-color: var(--black-background);
+      color: var(--white-primary);
+    }
 
-      .navigation {
-        ul {
-          list-style: none;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem 1rem;
-          align-items: center;
-        }
+    .site_header__inner {
+      display: flex;
+      flex-wrap: wrap;
+      padding-block: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navigation {
+      ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0rem 3rem;
+        align-items: center;
       }
     }
   }

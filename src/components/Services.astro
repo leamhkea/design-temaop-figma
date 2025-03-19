@@ -7,15 +7,17 @@ const servicesData = await fetch(
 import Button from "./Button.astro";
 ---
 
-<ul>
+<ul role="list">
   {
     servicesData.services.map((service) => (
       <li>
-        <h2>{service.title}</h2>
-        <p>{service.description}</p>
-        <Button variant="primary_button">
-          <a href="#0">{service.buttonText}</a>
-        </Button>
+        <div>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </div>
+        <div class="button">
+          <Button variant="primary_button">{service.buttonText}</Button>
+        </div>
       </li>
     ))
   }
@@ -25,33 +27,34 @@ import Button from "./Button.astro";
   @layer components {
     ul {
       display: grid;
-      gap: 1rlh;
-      max-inline-size: 1000px;
-      margin-inline: auto;
-      padding: 1rlh;
+      gap: 1rem;
 
-      @media (width > 600px) {
+      @media (width > 800px) {
         grid-template-columns: repeat(3, 1fr);
       }
 
       li {
         /* Styling */
-        list-style: none;
-        background-color: var(--black-primary);
+        background-color: var(--black-background);
         color: var(--white-primary);
-        opacity: 90%;
-        border-radius: 20px;
+        border-radius: var(--border-radius-items);
         /* backdrop-filter: blur(16px); */
 
+        padding: min(3rem, 5%);
+        /* width: min(90ch, 100% - 2rem); */
+
         /* Layout */
-        grid-row: span 3;
+        /* grid-row: span 2;
         display: grid;
-        gap: 0;
-        grid-template-rows: subgrid;
+        grid-template-rows: subgrid; */
 
         > * {
           padding: 1rem;
         }
+      }
+
+      .button {
+        padding-block: 1rem;
       }
     }
   }

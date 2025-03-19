@@ -1,0 +1,47 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="newsletter">
+  <div class="newsletter_text">
+    <h3>Subscribe Our Newsletter</h3>
+    <p>Build stronger Customer Relationships with Consultalk</p>
+  </div>
+  <div class="newsletter_input_button">
+    <input
+      id="Email"
+      placeholder="your email adress"
+      name="Email"
+      type="email"
+    />
+    <Button variant="secondary_button">Subscribe</Button>
+  </div>
+</div>
+
+<style>
+  @layer components {
+    div:not(.newsletter_text) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1rem;
+    }
+
+    .newsletter {
+      background-color: var(--black-primary);
+      color: var(--white-primary);
+      border-radius: var(--border-radius-items);
+
+      padding-block: 4rem;
+      align-items: center;
+    }
+
+    input {
+      background-color: var(--white-primary);
+      color: var(--black-primary);
+      border-radius: var(--border-radius-items);
+      padding-block: var(--heading-padding-block);
+      padding-left: 1rem;
+    }
+  }
+</style>

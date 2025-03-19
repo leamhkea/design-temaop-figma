@@ -1,0 +1,115 @@
+---
+import Slogan from "./Slogan.astro";
+import Phone from "../icons/phone.svg";
+import Pin from "../icons/pin.svg";
+import Clock from "../icons/clock.svg";
+---
+
+<div class="container_all">
+  <div class="container_text">
+    <Slogan slogan="slogan_yellow">PROCESS</Slogan>
+
+    <h2>Contact Us. It's Easy.</h2>
+    <p>
+      Leverage agile frameworks to provide a robust synopsis for high level
+      overviews. Iterative approaches to corporate strategy foster
+      collaborative.
+    </p>
+
+    <div class="svg_flex_section">
+      <div class="svg_flex_group">
+        <img src="/figmaicon/phone.svg" alt="phone" class="svg_phone" />
+        <div class="svg_flex_text">
+          <h4>+1 800 100 900</h4>
+          <p>Call Today</p>
+        </div>
+      </div>
+      <div class="svg_flex_group">
+        <img src="/figmaicon/clock.svg" alt="clock" class="svg_clock" />
+        <div class="svg_flex_text">
+          <h4>9AM - 5PM</h4>
+          <p>Monday To Friday</p>
+        </div>
+      </div>
+      <div class="svg_flex_group">
+        <img src="/figmaicon/map.svg" alt="map" class="svg_map" />
+        <div class="svg_flex_text">
+          <h4>195 Devonshire St Boston, MA 02110</h4>
+          <p>USA Office</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <figure class="container_img">
+    <img src="/img/contacthands.png" alt="hands" class="img_hands" />
+    <img src="/img/contactlady.png" alt="lady" class="img_lady" />
+    <img src="/img/contactwomen.png" alt="women" class="img_women" />
+  </figure>
+</div>
+
+<style>
+  @layer components {
+    figure {
+      position: relative;
+      margin-inline: auto;
+      display: block;
+    }
+    &::before {
+      content: "";
+      background: green;
+      height: 80px;
+      width: 200px;
+      display: block;
+      position: absolute;
+      top: 150rem;
+      right: 2rem;
+      z-index: 1;
+      border-radius: 9px;
+    }
+
+    .container_all {
+      display: grid;
+      grid-template-columns: 4fr 5fr;
+
+      p {
+        max-width: 40ch;
+      }
+    }
+
+    .container_img {
+      img {
+        border-radius: var(--border-radius-items);
+        inline-size: 100%;
+        display: block;
+      }
+
+      display: grid;
+      grid-template-areas:
+        "lady women"
+        "lady hands";
+      gap: 1rem;
+
+      .img_hands {
+        grid-area: hands;
+      }
+      .img_lady {
+        grid-area: lady;
+      }
+      .img_women {
+        grid-area: women;
+      }
+    }
+
+    .svg_flex_group {
+      display: flex;
+      gap: 2rem;
+      padding-block: 1rem;
+
+      .svg_flex_text {
+        > * {
+          padding: 0;
+        }
+      }
+    }
+  }
+</style>

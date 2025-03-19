@@ -1,0 +1,41 @@
+---
+
+---
+
+<footer>
+  <h3>AskExperts</h3>
+  <hr />
+  <div class="copyright_information">
+    <p>&#169;2022 Consultalk. All rights reserved</p>
+    <span>|</span>
+    <p>Terms of Service</p>
+    <span>|</span>
+    <p>Privacy Policy</p>
+    <p></p>
+  </div>
+</footer>
+
+<style>
+  @layer components {
+    footer {
+      background-color: var(--black-primary);
+      color: var(--white-primary);
+      padding-block: 2rem;
+      text-align: center;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .copyright_information {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0rem 1rem;
+    }
+
+    hr {
+      border: 0.2px solid var(--grey-dark);
+      width: 100%;
+    }
+  }
+</style>

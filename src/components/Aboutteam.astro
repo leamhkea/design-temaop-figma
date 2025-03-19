@@ -1,0 +1,52 @@
+---
+//@ts-nocheck
+
+const employeesData = await fetch(
+  "https://frontend-design-theme.netlify.app/api/employees"
+).then((response) => response.json());
+
+import Slogan from "./Slogan.astro";
+---
+
+<div class="employyes_container">
+  <div class="employyes_text">
+    <Slogan slogan="slogan_yellow">OUR TEAM</Slogan>
+    <h2>We champion the bold to achieve the extraordinary</h2>
+    <p>
+      Our success stems from the synergy between dedicated teams and our valued
+      clients. We prioritize a company culture that fosters exceptional
+      productivity, ensures customer satisfaction, and promotes mutual respect
+      among all team members.
+    </p>
+  </div>
+
+  <ul role="list">
+    {
+      employeesData.slice(0, 3).map((employee) => (
+        <li>
+          <p>{employee.title}</p>
+          <h3>{employee.name}</h3>
+          <p>{employee.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  @layer components {
+    .employyes_text {
+      max-width: 60ch;
+    }
+  }
+  ul {
+    display: grid;
+    gap: 2rem;
+    text-align: center;
+    padding-block: 2rem;
+
+    @media (width > 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

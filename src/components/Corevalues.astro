@@ -1,0 +1,72 @@
+---
+//@ts-nocheck
+const coreValues = await fetch(
+  "https://frontend-design-theme.netlify.app/api/coreValues"
+).then((response) => response.json());
+
+const { surface } = Astro.props;
+
+import Slogan from "./Slogan.astro";
+import Button from "./Button.astro";
+---
+
+<div class="core_values">
+  <Slogan slogan="slogan_yellow">GROWING WITH OUR CLIENTS</Slogan>
+  <h2>{coreValues.title}</h2>
+  <div class="container_text">
+    <p>{coreValues.subtitle}</p>
+    <Button variant="primary_button">Get in touch</Button>
+  </div>
+
+  <ul role="list">
+    {
+      coreValues.values.map((core) => (
+        <li data-surface={surface}>
+          <h3>{core.title}</h3>
+          <p>{core.description}</p>
+          <h4>Read More ➜ </h4>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  @layer components {
+    [data-surface="values_grey"] {
+      background-color: var(--grey-light);
+    }
+
+    [data-surface="values_white"] {
+      background-color: var(--white-primary);
+    }
+
+    .container_text {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .core_values {
+      p {
+        max-width: 60ch;
+      }
+
+      ul {
+        display: grid;
+        gap: 1rem;
+
+        @media (width > 800px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        li {
+          margin-top: var(--li-margin-top);
+          max-width: 25ch;
+          padding: 1rem 1.8rem;
+          border-radius: var(--border-radius-items);
+          background-color: var(--white-primary);
+        }
+      }
+    }
+  }
+</style>

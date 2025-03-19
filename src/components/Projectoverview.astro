@@ -1,0 +1,87 @@
+---
+//@ts-nocheck
+const casestudyData = await fetch(
+  "https://frontend-design-theme.netlify.app/api/caseStudy"
+).then((response) => response.json());
+
+import Button from "./Button.astro";
+---
+
+<div class="section_all">
+  <div class="overflow">
+    <figure class="container_img">
+      <img src="/img/casecomputer.png" alt="computer" class="computer" />
+    </figure>
+    <div class="container_text_overflow">
+      <div class="item_text">
+        <h3>Case Name</h3>
+        <p>Taxes & Efficiency</p>
+      </div>
+      <div class="item_text">
+        <h3>Category</h3>
+        <p>Business</p>
+      </div>
+      <div class="item_text">
+        <h3>Date</h3>
+        <p>27th September 2025</p>
+      </div>
+
+      <Button variant="secondary_button">Live Preview</Button>
+    </div>
+  </div>
+  <div class="section_projectoverview">
+    {
+      casestudyData.sections.map((casestudy) => (
+        <div class="section_description">
+          <h3>{casestudy.title}</h3>
+          <p>{casestudy.content}</p>
+
+          <ul>
+            <li>{casestudy.highlights}</li>
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @layer components {
+    img {
+      border-radius: var(--border-radius-items);
+    }
+
+    .container_text_overflow {
+      background-color: var(--black-primary);
+      color: var(--white-primary);
+      border-radius: var(--border-radius-items);
+
+      z-index: 1;
+      margin: 3rem;
+      padding-block: 3rem;
+      display: flex;
+      justify-content: space-around;
+
+      position: absolute;
+      bottom: -50px; /* Justér efter behov */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%; /* Justér bredden efter behov */
+    }
+
+    .overflow {
+      position: relative; /* Sørger for at dens børn (fx .container_text_overflow) kan placeres relativt til den */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container_img {
+      position: relative;
+      z-index: 0;
+    }
+    .section_projectoverview {
+      margin-inline: 8rem;
+    }
+  }
+</style>
