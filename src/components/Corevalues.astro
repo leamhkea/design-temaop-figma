@@ -33,14 +33,6 @@ import Button from "./Button.astro";
 
 <style>
   @layer components {
-    /* [data-surface="values_grey"] {
-      background-color: var(--grey-light);
-    }
-
-    [data-surface="values_white"] {
-      background-color: var(--white-primary);
-    } */
-
     .container_text {
       display: flex;
       justify-content: space-between;
@@ -50,6 +42,10 @@ import Button from "./Button.astro";
       color: var(--text-section);
       p {
         max-width: 60ch;
+      }
+
+      h4 {
+        cursor: pointer;
       }
 
       ul {
@@ -65,7 +61,6 @@ import Button from "./Button.astro";
           max-width: 25ch;
           padding: 1rem 1.8rem;
           border-radius: var(--border-radius-items);
-          /* background-color: var(--white-primary); */
           color: var(--text-card);
           background: var(--bg-card, #fff);
         }

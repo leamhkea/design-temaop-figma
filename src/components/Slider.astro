@@ -23,7 +23,7 @@ const sliderContent = await fetch(
             <Icon />
             <h2>{slider.title}</h2>
             <p>{slider.description}</p>
-            <a href={slider.link.url}>{slider.link.text}</a>
+            {/* <a href={slider.link.url}>{slider.link.text}</a> */}
           </li>
         );
       })
@@ -49,6 +49,7 @@ const sliderContent = await fetch(
         max-width: 60ch;
       }
     }
+
     ul {
       /* Styrer flex scroll delen */
       overflow-x: auto;
