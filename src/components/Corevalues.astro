@@ -4,7 +4,7 @@ const coreValues = await fetch(
   "https://frontend-design-theme.netlify.app/api/coreValues"
 ).then((response) => response.json());
 
-const { surface } = Astro.props;
+const { buttonvariant = "primary_button" } = Astro.props;
 
 import Slogan from "./Slogan.astro";
 import Button from "./Button.astro";
@@ -15,13 +15,13 @@ import Button from "./Button.astro";
   <h2>{coreValues.title}</h2>
   <div class="container_text">
     <p>{coreValues.subtitle}</p>
-    <Button variant="primary_button">Get in touch</Button>
+    <Button variant={buttonvariant}>Get in touch</Button>
   </div>
 
   <ul role="list">
     {
       coreValues.values.map((core) => (
-        <li data-surface={surface}>
+        <li>
           <h3>{core.title}</h3>
           <p>{core.description}</p>
           <h4>Read More ➜ </h4>
@@ -33,13 +33,13 @@ import Button from "./Button.astro";
 
 <style>
   @layer components {
-    [data-surface="values_grey"] {
+    /* [data-surface="values_grey"] {
       background-color: var(--grey-light);
     }
 
     [data-surface="values_white"] {
       background-color: var(--white-primary);
-    }
+    } */
 
     .container_text {
       display: flex;
@@ -47,6 +47,7 @@ import Button from "./Button.astro";
     }
 
     .core_values {
+      color: var(--text-section);
       p {
         max-width: 60ch;
       }
@@ -64,7 +65,9 @@ import Button from "./Button.astro";
           max-width: 25ch;
           padding: 1rem 1.8rem;
           border-radius: var(--border-radius-items);
-          background-color: var(--white-primary);
+          /* background-color: var(--white-primary); */
+          color: var(--text-card);
+          background: var(--bg-card, #fff);
         }
       }
     }

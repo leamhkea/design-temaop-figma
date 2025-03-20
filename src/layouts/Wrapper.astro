@@ -15,8 +15,33 @@ const { theme } = Astro.props;
     /* Sørger for alle sections har margin top-bottom */
     padding-block: 6rem;
 
+    background: var(--bg-section);
+    color: var(--text-section, var(--black-primary));
+
     > * {
       grid-column: content;
     }
+  }
+
+  /*                            SECTION COLOR THEMES (used in Wrapper & pages)                           */
+
+  section[data-theme="section_theme_white"] {
+    --bg-section: var(--white-primary);
+  }
+
+  section[data-theme="section_theme_grey"] {
+    --bg-section: var(--grey-light);
+  }
+
+  section[data-theme="section_theme_black"] {
+    --bg-section: var(--black-primary);
+    --text-section: var(--white-primary);
+
+    --bg-card: var(--grey-light);
+    --text-card: var(--black-primary);
+  }
+
+  section[data-theme="section_theme_yellow"] {
+    --bg-section: var(--yellow-dark);
   }
 </style>

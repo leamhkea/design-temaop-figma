@@ -83,22 +83,3 @@ h5 {
 h6 {
   font-size: var(--heading-06-fontsize);
 }
-
-/*                            SECTION COLOR THEMES (used in Wrapper & pages)                           */
-
-section[data-theme="section_theme_white"] {
-  background-color: var(--white-primary);
-}
-
-section[data-theme="section_theme_grey"] {
-  background-color: var(--grey-light);
-}
-
-section[data-theme="section_theme_black"] {
-  background-color: var(--black-primary);
-  color: var(--white-primary);
-}
-
-section[data-theme="section_theme_yellow"] {
-  background-color: var(--yellow-dark);
-}

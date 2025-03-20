@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Wrapper from "../layouts/Wrapper.astro";
 
-import Hero from "../components/Hero.astro";
 import HeroAbout from "../components/HeroAbout.astro";
 import OurVision from "../components/OurVision.astro";
 import Corevalues from "../components/Corevalues.astro";
@@ -12,7 +11,7 @@ import Newsletter from "../components/Newsletter.astro";
 ---
 
 <Layout>
-  <Wrapper theme="">
+  <Wrapper style="background-image: url('../../public/img/heroabout.webp')">
     <HeroAbout />
   </Wrapper>
 
@@ -21,7 +20,7 @@ import Newsletter from "../components/Newsletter.astro";
   </Wrapper>
 
   <Wrapper theme="section_theme_grey">
-    <Corevalues surface="values_grey" />
+    <Corevalues />
   </Wrapper>
 
   <Wrapper theme="section_theme_white">
