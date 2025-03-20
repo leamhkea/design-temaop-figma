@@ -13,6 +13,25 @@ const sliderContent = await fetch(
 
   <ul role="list">
     {
+      sliderContent.values.map(async (slider) => {
+        const Icon = await import(`../icons/${slider.icon}.svg`).then(
+          (module) => module.default
+        );
+
+        return (
+          <li>
+            <Icon />
+            <h2>{slider.title}</h2>
+            <p>{slider.description}</p>
+            <a href={slider.link.url}>{slider.link.text}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <!-- <ul role="list">
+    {
       sliderContent.values.map((slider) => (
         <li>
           <h3>{slider.title}</h3>
@@ -20,7 +39,7 @@ const sliderContent = await fetch(
         </li>
       ))
     }
-  </ul>
+  </ul> -->
 </div>
 
 <style>

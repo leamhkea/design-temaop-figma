@@ -1,1 +1,57 @@
-https://frontend-design-theme.netlify.app/api/employees/1
+---
+//@ts-nocheck
+
+export async function getStaticPaths() {
+  const employeesData = await fetch(
+    "https://frontend-design-theme.netlify.app/api/employees"
+  ).then((res) => res.json());
+
+  return employeesData.map((employye: any) => ({
+    params: { slug: employye.slug }, // [slug]=behandling.slug
+    props: { employye }, // send al data med som props
+  }));
+}
+
+const { employye } = Astro.props;
+import Newsletter from "../../components/Newsletter.astro";
+import Layout from "../../layouts/Layout.astro";
+import Wrapper from "../../layouts/Wrapper.astro";
+---
+
+<Layout>
+  <Wrapper theme="section_theme_white">
+    <div class="container_all">
+      <img src={employye.img} alt={employye.name} />
+      <div class="container_text">
+        <h2>{employye.name}</h2>
+        <p>{employye.description}</p>
+        <p>{employye.description_long}</p>
+
+        <hr />
+
+        <h3>Past experience</h3>
+        <p>{employye.past_experience}</p>
+      </div>
+    </div>
+    <Newsletter />
+  </Wrapper>
+</Layout>
+
+<style>
+  img {
+    border-radius: var(--border-radius-items);
+  }
+
+  .container_all {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  hr {
+    border: 0.2px solid var(--black-background);
+    width: 100%;
+    margin-top: 2rem;
+  }
+</style>

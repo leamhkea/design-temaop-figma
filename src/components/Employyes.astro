@@ -5,6 +5,8 @@ const employeesData = await fetch(
   "https://frontend-design-theme.netlify.app/api/employees"
 ).then((response) => response.json());
 
+console.log(employeesData);
+
 import Image from "astro/components/Image.astro";
 import Button from "./Button.astro";
 ---
@@ -25,15 +27,26 @@ import Button from "./Button.astro";
     {
       employeesData.map((employye) => (
         <li>
-          <img src={employye.img} alt={employye.name} />
-          {/* <p>{employye.title}</p> */}
-          <h3>{employye.name}</h3>
-          <p>{employye.description}</p>
+          <a href={`/employye/${employye.slug}`}>
+            <img src={employye.img} alt={employye.name} />
+            {/* <p>{employye.title}</p> */}
+            <h3>{employye.name}</h3>
+            <p>{employye.description}</p>
+            <a href={employye.url} set:html={employye.icon} />
+          </a>
         </li>
       ))
     }
   </ul>
 </div>
+
+<!-- {
+  social_links.map((link) => (
+    <li>
+      <a href={link.url} set:html={link.icon} />
+    </li>
+  ))
+} -->
 
 <style>
   @layer components {
@@ -44,6 +57,11 @@ import Button from "./Button.astro";
       max-width: 60ch;
     }
 
+    a {
+      color: var(--black-primary);
+      text-decoration: none;
+    }
+
     .employyes_text {
       display: flex;
       justify-content: space-between;
@@ -52,7 +70,7 @@ import Button from "./Button.astro";
 
     ul {
       display: grid;
-      gap: 2rem;
+      gap: 3rem;
       text-align: center;
       padding-block: 2rem;
 

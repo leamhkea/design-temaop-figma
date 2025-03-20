@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Wrapper from "../layouts/Wrapper.astro";
 
 import Hero from "../components/Hero.astro";
+import HeroAbout from "../components/HeroAbout.astro";
 import OurVision from "../components/OurVision.astro";
 import Corevalues from "../components/Corevalues.astro";
 import Aboutteam from "../components/Aboutteam.astro";
@@ -11,6 +12,10 @@ import Newsletter from "../components/Newsletter.astro";
 ---
 
 <Layout>
+  <Wrapper theme="">
+    <HeroAbout />
+  </Wrapper>
+
   <Wrapper theme="section_theme_white">
     <OurVision />
   </Wrapper>

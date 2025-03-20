@@ -24,7 +24,7 @@ import Slogan from "./Slogan.astro";
     {
       employeesData.slice(0, 3).map((employee) => (
         <li>
-          {/* <img src={employye.img} alt={employye.name} /> */}
+          <img src={employee.img} alt={employee.name} />
           <p>{employee.title}</p>
           <h3>{employee.name}</h3>
           <p>{employee.description}</p>
@@ -36,6 +36,10 @@ import Slogan from "./Slogan.astro";
 
 <style>
   @layer components {
+    img {
+      border-radius: var(--border-radius-items);
+    }
+
     .employyes_text {
       max-width: 60ch;
     }
