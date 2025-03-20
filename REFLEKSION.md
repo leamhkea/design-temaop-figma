@@ -4,7 +4,7 @@
 
 1.a Jeg startede med at danne et overblik over alle Custom Proporties med de mange variabler. Dette hjalp med at kunne mindske koden på alle mine pages og components. Heri havde jeg samlet alle farver, fonte, text-størrelser, line-heigt osv. så de basale ting ikke skulle gentages. Disse Custom Proporties var klart en successfyldt del af opgaven, som formindskede en del kode for mig.
 
-1.b En udfordring med opgaven var at få layout med en samlet margin / screen size til at fungere funktionelt. Denne udfordring blev til dels løst med en Wrapper layout, hvori jeg Wrappede alle mine components, så havde et ens layout og dermed ville flugtes med hinanden. En udfordring i denne løsning var, at få udvalgte components til IKKE at have samme layout...
+1.b En udfordring med opgaven var at få layout med en samlet margin / screen size til at fungere funktionelt. Denne udfordring blev til dels løst med en Wrapper layout, hvori jeg Wrappede alle mine components, så havde et ens layout og dermed ville flugtes med hinanden. En udfordring i denne løsning var, at få udvalgte components til IKKE at have samme layout.
 
 1.c Jeg forsøgte at lave mine components responsive, men det blev hurtigt en stor mundfuld, som desværre blev lidt nedprioriteret.
 
